@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _player = new BetPlayer();
-#if UNITY_WEBGL == true && UNITY_EDITOR == false
-                    GameReady("Ready");
-#endif
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
+            GameReady("Ready");
+        #endif
         priceValue = 10f;
         inputPriceText.text = priceValue.ToString("F2");
     }
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         {
             string strdata = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
             apiform = JsonUtility.FromJson<APIForm>(strdata);
-            Debug.Log(strdata);
+            Debug.Log(apiform.msg);
             if (apiform.serverMsg == "Success")
             {
                 if (loop == 0)
