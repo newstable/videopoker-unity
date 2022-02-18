@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
                 loop = loop + 1;
                 if (apiform.msg == "")
                 {
-                    StartCoroutine(resultAlert("You lose..."));
+                    StartCoroutine(resultAlert("Better luck next time!"));
                 }
                 else
                 {
@@ -231,6 +231,11 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator resultAlert(string msg) {
         alertText.text = msg;
+        if(msg == "Better luck next time!"){
+            alertText.color = Color.white;
+        }else{
+            alertText.color = Color.yellow;
+        }
         AlertController.isAlert = true;
         yield return new WaitForSeconds(3f);
         AlertController.isAlert = false;
